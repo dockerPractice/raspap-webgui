@@ -502,6 +502,12 @@ function SaveHostAPDConfig($wpa_array, $enc_types, $modes, $interfaces, $status)
 
   if ($good_input) {
     if ($tmp_file = fopen('/tmp/hostapddata', 'w')) {
+      if( 0 == 1 ) {
+      fwrite($tmp_file, 'bridge=br0'.PHP_EOL);
+      fwrite($tmp_file, 'macaddr_acl=0'.PHP_EOL);
+      fwrite($tmp_file, 'ignore_broadcast_ssid=0'.PHP_EOL);
+      fwrite($tmp_file, 'rsn_pairwise=CCMP'.PHP_EOL);      
+      }
       // Fixed values
       fwrite($tmp_file, 'driver=nl80211'.PHP_EOL);
       fwrite($tmp_file, 'ctrl_interface='.RASPI_HOSTAPD_CTRL_INTERFACE.PHP_EOL);
