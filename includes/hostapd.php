@@ -502,7 +502,7 @@ function SaveHostAPDConfig($wpa_array, $enc_types, $modes, $interfaces, $status)
 
   if ($good_input) {
     if ($tmp_file = fopen('/tmp/hostapddata', 'w')) {
-      if( 0 == 1 ) {
+      if( 0 == 111 ) {
       fwrite($tmp_file, 'bridge=br0'.PHP_EOL);
       fwrite($tmp_file, 'macaddr_acl=0'.PHP_EOL);
       fwrite($tmp_file, 'ignore_broadcast_ssid=0'.PHP_EOL);
