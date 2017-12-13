@@ -13,7 +13,14 @@ function DisplayDHCPConfig() {
   if( isset( $_POST['savedhcpdsettings'] ) ) {
     if (CSRFValidate()) {
       $config = 'interface='.$_POST['interface'].PHP_EOL
-        .'dhcp-range='.$_POST['RangeStart'].','.$_POST['RangeEnd'].',255.255.255.0,'.$_POST['RangeLeaseTime'].''.$_POST['RangeLeaseTimeUnits'];
+        .'dhcp-range='.$_POST['RangeStart'].','.$_POST['RangeEnd'].',255.255.255.0,'.$_POST['RangeLeaseTime'].''.$_POST['RangeLeaseTimeUnits'].PHP_EOL
+        .'listen-address=127.0.0.1'.PHP_EOL
+        .'bind-interfaces'.PHP_EOL
+        .'server=8.8.8.8'.PHP_EOL
+        .'domain-needed'.PHP_EOL
+        .'bogus-priv'.PHP_EOL;
+
+
       exec( 'echo "'.$config.'" > /tmp/dhcpddata',$temp );
       system( 'sudo cp /tmp/dhcpddata '. RASPI_DNSMASQ_CONFIG, $return );
 
